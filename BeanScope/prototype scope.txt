@@ -1,0 +1,18 @@
+everytime we create a bean of prototype scope, we will get a brand new object
+this is used to avoid race conditions
+this is used where data of the object is changed many times 
+this is rarely used and be very careful with using this
+
+if your parent class bean scope is singleton then the child class dependency which you are autowring inside the parent will automatically be singleton
+if your parent is prototype only then the child can be prototype
+
+for example:
+I have a parent Vehicle --> @Autowired vehicleServices
+
+now on my vehicleServices class, i have defined @Scope(BeanDefinition.SCOPE_PROTOTYPE)
+
+now in my main class, when i get the vehcileServices bean directly, each time i get it from the context , i will get a different bean
+but if i use the vehicle class to get the vehcileServices bean then each time i will get the same vehcileServices bean (here it is singleton due to vehicle)
+
+refer example 16 from GIT repo of the course and not my repo
+

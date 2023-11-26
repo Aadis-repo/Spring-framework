@@ -1,0 +1,2 @@
+1. if there are field variables being modified then we should not use signleton scope
+2. if there are no field variables and the class is used only for business logic like service layer or repository layer only then we should use singleton
